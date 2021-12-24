@@ -1,0 +1,40 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<style>
+    input {max-width: 100%};
+</style>
+
+<div class="col-md-8">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{message.tags}}" role="alert">
+                <strong>{{ message }}</strong>
+            </div>
+       {% endfor %}
+    {% endif %}
+    <div class="content-section">
+        <div class="media">
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+            <div class="media-body">
+                <h2 class="account-heading">{{ user.username }}</h2>
+                <p class="text-secondary">{{ user.email }}</p>
+            </div>
+        </div>
+        {% block update_form %}{% endblock update_form %} 
+    </div>  
+</div>
+
+<div class="col-md-4">
+    <div class="content-section">
+        <h3>Account</h3>
+        <p class='text-muted'>Your personal account
+            <div class="list-group">
+                <a href="{% url 'my-posts' %}" class="list-group-item list-group-item-action list-group-item-light {{ active_1 }}" >My Posts</a>
+                <a href="{% url 'user-profile' %}" class="list-group-item list-group-item-light list-group-item-action {{ active_2 }}">Update Profile</a>
+                <a href="{% url 'user-password' %}" class="list-group-item list-group-item-light list-group-item-action {{ active_3 }}" >Update Password</a>
+                <a href="{% url 'user-picture' %}" class="list-group-item list-group-item-action list-group-item-light {{ active_4 }}" aria-current="true">Update Picture</a>
+            </div>
+        </p>
+    </div>
+</div>
+{% endblock content %}
