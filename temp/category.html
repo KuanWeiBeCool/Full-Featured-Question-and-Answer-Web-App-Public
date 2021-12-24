@@ -1,0 +1,50 @@
+{% extends "blog/home_base.html" %}
+{% load static%}
+{% block posts %}
+    <div class="col-md-8 infinite-container">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}}" role="alert">
+            <strong>{{ message }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% for post in posts %}
+        <div class="infinite-item">
+            <article class="media content-section">
+                <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        {% if post.author == user %}
+                            <a class="mr-2" href="{% url 'my-posts' %}">{{ post.author }}</a>                    
+                        {% else %}
+                            <a class="mr-2" href="{%url 'user-posts' post.author%}">{{ post.author }}</a>     
+                        {% endif %}
+
+                        <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                        <small class="text-muted float-right">{{ post.category }}</small>
+                    </div>
+                    <h2><a class="article-title" href="{%url 'post-detail' post.id%}">{{ post.title }}</a></h2>
+                    <div style ="display: block;  white-space:nowrap; overflow:hidden; width: 500px; height:100px; ">
+                        {{ post.content.html|safe  }}
+                    </div>
+                </div>
+            </article>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock posts %}
+
+{% block infinite_scroll %}
+    {% if page_obj.has_next %}
+        <div class="loading">
+            <div class="d-flex align-items-center">
+                <strong>Loading...</strong>
+                <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+            </div>
+        </div>
+        <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"></a>
+    {% endif %}
+{% endblock infinite_scroll %}
+
+
