@@ -1,5 +1,7 @@
 # Full-Featured-Web-App-Public
 
+Link: [link](https://kuanwei-qandawebapp.herokuapp.com/)
+
 This is a question and answer web app built using Django and hosted on Heroku. Here are some useful features:
 
 - **Sign Up / Login:** you can sign up as a new user to access the full features of the web app. If you've already registered, simply sign in again! *Note: to avoid getting overcrowded on my database, the user information will be reset after the page is closed. Thus, you need to sign up again if you leave the page.*
