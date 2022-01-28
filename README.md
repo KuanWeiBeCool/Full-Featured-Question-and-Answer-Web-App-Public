@@ -1,6 +1,7 @@
 # Full-Featured-Web-App-Public
 
-Link: [CodeMonster](https://kuanwei-qandawebapp.herokuapp.com/)
+Link: [CodeMonster](https://kuanwei-qandawebapp.herokuapp.com/) (*Please note that the app might be sleeping, so you might need to wait for a moment for it to wake up :)*)
+
 
 This is a question and answer web app built using Django and hosted on Heroku. Here are some useful features:
 
